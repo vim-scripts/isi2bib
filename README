@@ -1,0 +1,18 @@
+This is a mirror of http://www.vim.org/scripts/script.php?script_id=704
+
+Function:
+Convert a bibliographic database from ISI (Institute of Scientific Information, Web of Science) export format to BibTeX format.
+
+Noninteractive Usage:
+From the command line, cd to the directory of the ISI database, and issue the command
+	vim -u NONE -c ":ru isi2bib.vim" fname
+where fname is the name of the ISI database file. The BibTeX database will be saved in base(fname).bib where base(fname) is the ISI file name without an extension.
+
+Description:
+BibTeX keys are constructed as follows: (last name of first author).(last two digits of year).(disambiguation mark) where the disambiguation mark is a lower case letter that is used only when needed. For example, a key could be Smith03 if it is unique but will be Smith03f if it is the 7th key starting with Smith03.
+
+Only records of type(PT) article are converted. Other record types are ignored. Only the author(AU), title(TI), pages(BP,EP), year(PY), volume(VL) and journal(JI) fields are converted.
+
+Recent ISI records (1996 and later) use both lower- and upper-case. The case is respected and protected by braces when necessary. Older (pre-1996) ISI records use only upper case. A crude conversion to mixed case is made.
+
+Some manual cleanup of the title fields will be required; for example, to use math mode for symbols, etc.
